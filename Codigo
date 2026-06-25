@@ -1,0 +1,143 @@
+let total_da_compra = 0;
+let quer_continuar = "sim";
+
+estoque=[
+    ["ração-cachorro", 10,12],
+    ["ração-gato", 10, 15],
+    ["antipulgas", 20, 45],
+    ["vermifugo", 15, 20],
+    ["xampu", 30, 30],
+    ["coleira", 25, 20],
+    ["Brinquedo", 15, 30],
+    ["Caminha", 80, 10],
+    ["Bebedouro", 50, 15]
+    ]
+
+ console.log("--- BEM-VINDO À AGROPECUÁRIA PET ---");
+
+
+while (quer_continuar === "sim" || quer_continuar === "s") {
+   
+    console.log("\nO que você deseja comprar hoje?");
+    console.log("1 - Ração");
+    console.log("2 - Remédios");
+    console.log("3 - Itens/Acessórios");
+    console.log("0 - Sair e fechar conta");
+   
+    let opcao_menu = prompt("Digite o número da opção: ");
+
+
+    switch (opcao_menu) {
+        case '0':
+            console.log("Saindo do menu...");
+            quer_continuar = "não";
+            break;
+
+
+        case '1':
+            console.log("\n--- MENU DE RAÇÕES ---");
+            console.log("gato - Ração para Gato (R$ 15,00 o quilo)");
+            console.log("cachorro - Ração para Cachorro (R$ 12,00 o quilo)");
+            let tipo_racao = prompt("Digite 'gato' ou 'cachorro': ");
+           
+            if (tipo_racao === "gato") {
+                let quilos = prompt("Quantos quilos você quer? ");
+                let preco_final = quilos * estoque[1][2];
+                estoque[1][1] = estoque[1][1] - quilos;
+                total_da_compra = total_da_compra + preco_final;
+                console.log("Ração de gato adicionada!");
+            }
+            else if (tipo_racao === "cachorro") {
+                let quilos = prompt("Quantos quilos você quer? ");
+                let preco_final = quilos * estoque[0][2];
+                estoque[0][1] = estoque[0][1] - quilos;
+                total_da_compra = total_da_compra + preco_final;
+                console.log("Ração de cachorro adicionada!");
+            }
+            else {
+                console.log("Tipo de ração inválida!");
+            }
+            break;
+
+
+        case '2':
+            console.log("\n--- MENU DE REMÉDIOS ---");
+            console.log("1 - Antipulgas (R$ 45,00)");
+            console.log("2 - Vermífugo (R$ 20,00)");
+            console.log("3 - Xampu para coceira (R$ 30,00)");
+            let opcao_remedio = prompt("Escolha o remédio (1, 2 ou 3): ");
+
+
+            if (opcao_remedio === "1") {
+                total_da_compra = total_da_compra + 45;
+                console.log("Antipulgas adicionado!");
+            }
+            if (opcao_remedio === "2") {
+                total_da_compra = total_da_compra + 20;
+                console.log("Vermífugo adicionado!");
+            }
+            if (opcao_remedio === "3") {
+                total_da_compra = total_da_compra + 30;
+                console.log("Xampu adicionado!");
+            }
+            break;
+
+
+        case '3':
+            console.log("\n--- MENU DE ITENS ---");
+            console.log("1 - Coleira (R$ 25,00)");
+            console.log("2 - Brinquedo de borracha (R$ 15,00)"); 
+            console.log("3 - Caminha pet (R$ 80,00)");
+            console.log("4 - Bebedouro ( R$ 50,00)");
+            let opcao_item = prompt("Escolha o item (1, 2, 3 ou 4): ");
+
+
+            if (opcao_item === "1") {
+                total_da_compra = total_da_compra + estoque[5][2];
+                estoque[5][1] = estoque[5][1] - 1;
+                console.log("Coleira adicionada!");
+            }
+            if (opcao_item === "2") {
+                total_da_compra = total_da_compra + estoque[6][2]                                                                                           ;
+                estoque[6][1] = estoque[6][1] - 1;
+                console.log("Brinquedo adicionado!");
+            }
+            if (opcao_item === "3") {
+                total_da_compra = total_da_compra + estoque[7][2];
+                estoque[7][1] = estoque[7][1] - 1;
+                console.log("Caminha adicionada!");
+            }
+            if (opcao_item === "4") {
+                total_da_compra = total_da_compra + estoque[8][2];
+                estoque[8][1] = estoque[8][1] - 1;
+                console.log("Bebedouro adicionado!")
+            }
+            break;
+            
+            case '4':
+                 console.log("Bem vindo ao menu do gerente !") 
+                 console.log("Digite 1 para verificar o estoque ")
+                 console.log("Digite 2 para verificar as vendas  ")
+                 let menugerente= prompt()
+                 if(menugerente === "1"){
+                 console.log(estoque)
+                }
+                    if(menugerente === "2"){
+                        console.log("Total de vendas: R$ " + total_da_compra)}
+                break;
+        default:
+            console.log("Opção inválida no menu!");
+    }
+
+
+    if (opcao_menu !== '0') {
+        quer_continuar = prompt("\nVocê quer comprar algo mais? (sim/nao): ");
+    }
+}
+
+
+console.log("\n------------------------------------");
+console.log(" COMPRA FINALIZADA COM SUCESSO ");
+console.log(" Total a pagar: R$ " + total_da_compra);
+console.log("------------------------------------");
+
